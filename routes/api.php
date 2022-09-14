@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PilotController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,12 @@ use App\Http\Controllers\CarsController;
 // });
 
 Route::prefix('v0')->group(function () {
+    Route::prefix('auth')->controller(AuthController::class)->group(function () 
+    {
+        Route::get('/user', 'authUser');
+        Route::post('/login', 'login')->name('login');
+        Route::post('/logout', 'logout')->name('logout');
+    });
 
     Route::apiResource('cars', CarsController::class);
     Route::apiResource('pilots', PilotController::class);

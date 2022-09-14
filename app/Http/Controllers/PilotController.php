@@ -11,6 +11,10 @@ use App\Models\Pilot;
 
 class PilotController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
 	/**
      * @OA\Get(
      *     path="/pilot-api/v0/pilots",

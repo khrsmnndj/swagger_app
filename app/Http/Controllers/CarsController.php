@@ -12,6 +12,10 @@ use OpenApi\Annotations as OA;
 
 class CarsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     /**
      * @OA\Get(
      *     path="/pilot-api/v0/cars",
